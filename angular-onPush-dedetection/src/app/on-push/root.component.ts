@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <button (click)="changeName()">Change Name</button>
     <button (click)="changeUser()">Change Name (ref)</button>
+    <button (click)="triggerChangeDetection()">triggerChangeDetection in root</button>
     <details><summary>Root value: {{user.name}}</summary><pre>{{user | json}}</pre></details>
 
     <app-name [user]="user"></app-name>
@@ -31,4 +32,6 @@ export class OnPushRootComponent {
       name: this.user.name === 'Bar' ? 'Foo' : 'Bar'
     };
   }
+
+  protected triggerChangeDetection(): void {}
 }

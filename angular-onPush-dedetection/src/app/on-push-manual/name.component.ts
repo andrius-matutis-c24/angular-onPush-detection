@@ -1,11 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, Signal, input } from '@angular/core';
+import { NameChildComponent } from './name-child.component';
 
 @Component({
   selector: 'app-name',
   standalone: true,
-  imports: [],
+  imports: [NameChildComponent],
   styles: [':host{display: block}'],
-  template: 'Name: {{user?.name}}',
+  template: `
+    Name: {{user?.name}}
+    <app-name-child></app-name-child>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NameComponent implements DoCheck {
@@ -16,7 +20,8 @@ export class NameComponent implements DoCheck {
 
 
   public ngDoCheck(): void {
-    console.log({lv:this.lastValue, u: this.user})
+    // runs always when parent runs change detection
+    console.log('NameComponent.ngDoCheck', {lastValue:this.lastValue, user: this.user})
     if (this.lastValue?.name !== this.user?.name) {
         this.lastValue = {...this.user};
         this.changeDetectionRef.markForCheck();
