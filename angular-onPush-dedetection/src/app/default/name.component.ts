@@ -7,7 +7,7 @@ import { NameChildComponent } from './name-child.component';
   imports: [NameChildComponent],
   styles: [':host{display: block}'],
   template: `
-    Name: {{user().name}}
+    <b>User.name:</b> {{user().name}}
     <app-name-child></app-name-child>
   `,
 })

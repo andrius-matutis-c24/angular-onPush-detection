@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+@border-radius: 6px;
+
+:root {
+    font-size: 30px;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+
+    &:after {
+        content: '';
+        display: block;
+        border: 1px solid gray;
+        flex-basis: 100%;
+        height: 1px;
+        border-radius: 50%;
+    }
+}
+li {
+    margin: 0;
+    padding: 0.5rem;
+    list-style: none;
+
+
+    border: 1px solid gray;
+    border-radius: @border-radius;
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &:has(a) {
+        cursor: pointer;
+    }
+
+
+    &:has(a.active-link):not(:hover) {
+        background: blue;
+        color: white;
+    }
+
+    &:hover {
+        background-color: red;
+    }
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 15px;
+
+    button {
+        border: 1px solid gray;
+        border-radius: @border-radius;
+        background: rgb(255, 255, 255);
+        padding: 0.5rem;
+
+        &:hover {
+            background-color: red;
+        }
+    }
+}
+
+details {
+    margin-top: 1rem;
+
+    &:before {
+        content: 'RootComponent:';
+        display: block;
+        font-size: .8rem;
+        font-style: italic;
+    }
+
+    pre {
+        padding-left: 1rem;
+
+        &:before {
+            content: 'User:';
+            display: block;
+            font-size: .8rem;
+            font-style: italic;
+            white-space: initial;
+            font-family: initial;
+        }
+    }
+}
+
+app-name {
+    margin-top: 1rem;
+    &:before {
+        content: 'NameComponent:';
+        display: block;
+        font-size: .8rem;
+        font-style: italic;
+    }
+
+    b {
+        padding-left: 1rem;
+    }
+}

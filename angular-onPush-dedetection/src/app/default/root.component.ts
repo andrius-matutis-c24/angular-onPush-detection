@@ -3,7 +3,7 @@ import { NameComponent } from './name.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-default-change-detection-root',
+  selector: 'app-root-container',
   standalone: true,
   imports: [
     NameComponent,
@@ -11,10 +11,13 @@ import { CommonModule } from '@angular/common';
   ],
   styles: [':host{display: block}'],
   template: `
-    <button (click)="changeName()">Change Name</button>
-    <button (click)="changeUser()">Change Name (ref)</button>
-    <button (click)="triggerChangeDetection()">triggerChangeDetection in root</button>
-    <details><summary>Root value: {{user.name}}</summary><pre>{{user | json}}</pre></details>
+    <div class="buttons">
+      <button (click)="changeName()">Change Name</button>
+      <button (click)="changeUser()">Change Name (ref)</button>
+      <button (click)="triggerChangeDetection()">triggerChangeDetection in root</button>
+    </div>
+
+    <details><summary><b>User.name:</b> {{user.name}}</summary><pre>{{user | json}}</pre></details>
 
     <app-name [user]="user"></app-name>
   `,
